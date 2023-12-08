@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # install nginx if it doesn't exist
+# shellcheck disable=SC2230
 if [ "$(which nginx | wc -l)" == 0 ]; then
     # install nginx
     apt-get -y update
     apt-get -y install nginx
 fi
 
-# shellcheck disable=SC2230
 # create structure folders
 mkdir -p /data/web_static/{releases/test,shared}
 home_page="<html>
