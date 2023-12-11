@@ -20,6 +20,7 @@ def do_pack():
     print("Packing web_static to ".format(fileName))
     local("tar -cvzf {} web_static".format(fileName))
     fileDetail = os.stat(fileName)
-    print("web_static packed: {} -> {}Bytes\n".format(fileName, fileDetail.st_size))
+    print("web_static packed: {} -> {}Bytes\n".format(fileName,
+                                                      fileDetail.st_size))
     print("Done")
     return fileName
