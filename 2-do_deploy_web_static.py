@@ -49,7 +49,3 @@ def do_deploy(archive_path):
         return True
     except Exception:
         return False
-
-
-fileName = do_pack()
-do_deploy(fileName)
