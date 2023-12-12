@@ -2,7 +2,8 @@
 """module for automating website deployment"""
 from datetime import datetime
 import os
-from fabric.api import local, env, put, run, runs_once, hosts
+from fabric.operations import local, put, run
+from fabric.api import runs_once, local, env
 
 env.hosts = ["54.236.49.164", "52.86.203.42"]
 
@@ -28,7 +29,6 @@ def do_pack():
     return archive_path
 
 
-@hosts("54.236.49.164", "52.86.203.42")
 def do_deploy(archive_path):
     """this function deploy our website to the servers"""
     if (not os.path.exists(archive_path)):
