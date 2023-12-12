@@ -7,25 +7,25 @@ from fabric.api import local, env, put, run, runs_once
 env.hosts = ["54.236.49.164", "52.86.203.42"]
 
 
-@runs_once
-def do_pack():
-    """this function pack our site in a tgz file"""
-    if (not os.path.exists("versions")):
-        os.mkdir("versions")
-    time = datetime.now()
-    archive_path = "versions/web_static_{}{}{}{}{}{}.tgz".format(
-        time.year,
-        time.month,
-        time.day,
-        time.hour,
-        time.minute,
-        time.second)
-    print("Packing web_static to ".format(archive_path))
-    local("tar -cvzf {} web_static".format(archive_path))
-    file_detail = os.stat(archive_path)
-    print("web_static packed: {} -> {}Bytes\n".format(archive_path,
-                                                      file_detail.st_size))
-    return archive_path
+# @runs_once
+# def do_pack():
+#     """this function pack our site in a tgz file"""
+#     if (not os.path.exists("versions")):
+#         os.mkdir("versions")
+#     time = datetime.now()
+#     archive_path = "versions/web_static_{}{}{}{}{}{}.tgz".format(
+#         time.year,
+#         time.month,
+#         time.day,
+#         time.hour,
+#         time.minute,
+#         time.second)
+#     print("Packing web_static to ".format(archive_path))
+#     local("tar -cvzf {} web_static".format(archive_path))
+#     file_detail = os.stat(archive_path)
+#     print("web_static packed: {} -> {}Bytes\n".format(archive_path,
+#                                                       file_detail.st_size))
+#     return archive_path
 
 
 def do_deploy(archive_path):
