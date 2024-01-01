@@ -26,7 +26,7 @@ def display_state_city(id):
     state = None
     if (state_id in states):
         state = states[state_id].values()
-        return render_template("9-states.html", states=None, state=state)
+    return render_template("9-states.html", states=None, state=state)
 
 
 if __name__ == "__main__":
