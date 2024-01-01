@@ -15,7 +15,7 @@ def close_session(e):
 def display_states():
     """fetch all states"""
     states = storage.all(State).values()
-    return render_template("9-states.html", states=states, cities=None)
+    return render_template("9-states.html", states=states, state=None)
 
 
 @app.route("/states/<string:id>", strict_slashes=False)
