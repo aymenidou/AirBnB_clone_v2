@@ -20,12 +20,13 @@ def display_states():
 
 @app.route("/states/<id>", strict_slashes=False)
 def display_state_city(id):
-    """fetch all states"""
+    """fetch all cities of one state"""
     state_id = "State." + id
     states = storage.all(State)
+    state = None
     if (state_id in states):
-        states = states[state_id].values()
-    return render_template("9-states.html", states=states, cities="show")
+        state = states[state_id].values()
+    return render_template("9-states.html", states=state, cities="show")
 
 
 if __name__ == "__main__":
