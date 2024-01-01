@@ -14,7 +14,7 @@
         </LI>
         {% endfor %}
     </UL>
-    {% elif cities is none %}
+    {% elif cities is not none %}
     <H1>States: {{state.name}}</H1>
     <H3>Cities:</H3>
     <UL>

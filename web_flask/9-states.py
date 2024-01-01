@@ -18,7 +18,7 @@ def display_states():
     return render_template("9-states.html", states=states, cities=None)
 
 
-@app.route("/states/<id>", strict_slashes=False)
+@app.route("/states/<string:id>", strict_slashes=False)
 def display_state_city(id):
     """fetch all cities of one state"""
     state_id = "State." + id
