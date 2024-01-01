@@ -6,7 +6,7 @@
 </HEAD>
 
 <BODY>
-    {% if cities is none %}
+    {% if state is none %}
     <H1>States</H1>
     <UL>
         {% for state in states|sort(attribute='name'): %}
@@ -14,7 +14,7 @@
         </LI>
         {% endfor %}
     </UL>
-    {% elif cities is not none %}
+    {% elif state is not none %}
     <H1>States: {{state.name}}</H1>
     <H3>Cities:</H3>
     <UL>
