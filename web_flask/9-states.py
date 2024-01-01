@@ -17,6 +17,7 @@ def display_states():
     states = storage.all(State).values()
     return render_template("9-states.html", states=states, cities=None)
 
+
 @app.route("/states/<id>", strict_slashes=False)
 def display_states(id):
     """fetch all states"""
