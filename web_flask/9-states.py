@@ -24,7 +24,7 @@ def display_states(id):
     state_id = "State." + id
     states = storage.all(State)
     if (state_id in states):
-        states = states[state_id]
+        states = states[state_id].values()
     return render_template("9-states.html", states=states, cities="show")
 
 
