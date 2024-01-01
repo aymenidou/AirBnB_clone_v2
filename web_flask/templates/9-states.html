@@ -6,7 +6,7 @@
 </HEAD>
 
 <BODY>
-    {% if cities is none %}
+    {% if cities is None %}
     <H1>States</H1>
     <UL>
         {% for state in states|sort(attribute='name'): %}
