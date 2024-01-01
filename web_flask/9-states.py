@@ -19,7 +19,7 @@ def display_states():
 
 
 @app.route("/states/<id>", strict_slashes=False)
-def display_states(id):
+def display_state_city(id):
     """fetch all states"""
     state_id = "State." + id
     states = storage.all(State)
