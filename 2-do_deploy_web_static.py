@@ -33,19 +33,30 @@ def do_deploy(archive_path):
     if (not os.path.exists(archive_path)):
         return False
 
-    file_name = os.path.basename(archive_path)
-    folder_name = file_name.replace('.tgz', '')
-    extraction_path = "/data/web_static/releases/{}".format(folder_name)
-    print(file_name)
+    path_nx = path.splitext(archive_path)[0]
+    path_nx = path_nx.split('/')[-1]
+    path_yx = path_nx + '.tgz'
+
     try:
         put(archive_path, "/tmp/")
-        run("mkdir -p {}".format(extraction_path))
-        run("tar -xzf /tmp/{} -C {}".format(file_name, extraction_path))
-        run("rm -rf /tmp/{}".format(file_name))
-        run("mv {}/web_static/* {}/ ".format(extraction_path, extraction_path))
-        run("rm -rf {}/web_static ".format(extraction_path))
-        run("rm -rf /data/web_static/current")
-        run("ln -s {}/ /data/web_static/current".format(extraction_path))
+
+        run('mkdir -p /data/web_static/releases/{:s}/'.format(path_nx))
+
+        run('tar -xzf /tmp/{:s} -C /data/web_static/releases/{:s}/'.
+            format(path_yx, path_nx))
+
+        run('rm /tmp/{:s}'.format(path_yx))
+
+        run('mv /data/web_static/releases/{:s}/web_static/*'
+            ' /data/web_static/releases/{:s}/'.
+            format(path_nx, path_nx))
+
+        run('rm -rf /data/web_static/releases/{:s}/web_static'.format(path_nx))
+
+        run('rm -rf /data/web_static/current')
+
+        run('ln -s /data/web_static/releases/{:s}/ /data/web_static/current'.
+            format(path_nx))
         print('New version deployed!')
         return True
     except Exception:
