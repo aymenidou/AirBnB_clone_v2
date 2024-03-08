@@ -33,7 +33,7 @@ def do_deploy(archive_path):
     if (not os.path.exists(archive_path)):
         return False
 
-    path_nx = path.splitext(archive_path)[0]
+    path_nx = os.path.splitext(archive_path)[0]
     path_nx = path_nx.split('/')[-1]
     path_yx = path_nx + '.tgz'
 
